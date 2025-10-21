@@ -1,9 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+    './src/app/**/*.{ts,tsx}', // all pages and layouts
+    './src/components/**/*.{ts,tsx}', // all reusable components
+  ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        heading: ['var(--font-heading)'],
+        body: ['var(--font-body)'],
+      },
+    },
   },
   plugins: [],
-}
-
+};
