@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import DayCell from './DayCell';
 
 interface CalendarGridProps {
   visibleMonth: number;
@@ -35,35 +36,22 @@ export default function CalendarGrid({ visibleMonth, visibleYear, today }: Calen
     return array;
   }, [visibleMonth, visibleYear]);
 
+  const fake_games = [
+    { id: '1', homeTeam: 'XAVIER', awayTeam: 'BUTLER', time: '7:00 PM' },
+    { id: '2', homeTeam: 'CONN', awayTeam: 'BUT', time: '8:00 PM' },
+    { id: '3', homeTeam: 'XAVIER', awayTeam: 'BUTLER', time: '8:00 PM' },
+    { id: '4', homeTeam: 'CONN', awayTeam: 'BUT', time: '9:00 PM' },
+  ];
+
   return (
     <div className="flex flex-col items-center w-full max-w-5x1 mb-8">
       {/* Day Grid */}
-      <div className="grid grid-cols-7 w-[80%] h-[85vh] w-full max-w-5xl">
+      <div className="grid grid-cols-7 w-[80%] w-full max-w-5xl style={{ gridTemplateRows: `repeat(${numRows}` }}">
         {/* Example days */}
         {daysArray.map((cell, i) => {
-          const isToday =
-            cell.day === currDay && visibleMonth === currMonth && visibleYear === currYear;
-          return (
-            <div
-              key={i}
-              className="border border-gray-300 bg-white flex items-start justify-start p-2 relative"
-            >
-              <span className="relative inline-flex items-center justify-center">
-                {isToday && <span className="absolute w-6 h-6 bg-red-500 rounded-full"></span>}
-                <span
-                  className={`text-sm ${
-                    isToday
-                      ? 'text-white font-bold'
-                      : cell.currentMonth
-                        ? 'text-gray-800 font-bold'
-                        : 'text-gray-400'
-                  } relative`}
-                >
-                  {cell.day}
-                </span>
-              </span>
-            </div>
-          );
+          const isoKey = `${visibleYear}-${String(visibleMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+          const isToday = cell.day === currDay && cell.currentMonth;
+          return <DayCell key={isoKey} cell={cell} isToday={isToday} games={fake_games} />;
         })}
       </div>
     </div>
