@@ -50,11 +50,7 @@ export default function CalendarGrid({ visibleMonth, visibleYear, today }: Calen
         {/* Example days */}
         {daysArray.map((cell, i) => {
           const isoKey = `${visibleYear}-${String(visibleMonth + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
-          const isToday =
-            cell.day === currDay &&
-            visibleMonth === currMonth &&
-            visibleYear === currYear &&
-            cell.currentMonth;
+          const isToday = cell.day === currDay && cell.currentMonth;
           return <DayCell key={isoKey} cell={cell} isToday={isToday} games={fake_games} />;
         })}
       </div>

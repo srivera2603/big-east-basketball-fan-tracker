@@ -7,7 +7,7 @@ body {
   @apply bg-gray-50 text-gray-900;
 }
 
-/* Tailwind scrollbar hide plugin or custom */
+/* Tailwind scrollbar hide plugin */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

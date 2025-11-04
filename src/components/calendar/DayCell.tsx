@@ -18,21 +18,21 @@ export default function DayCell({ cell, isToday, games }: DayCellProps) {
   const [showBottomFade, setShowBottomFade] = useState(false);
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+    const frame = containerRef.current;
+    if (!frame) return;
 
     const updateFades = () => {
-      const atTop = el.scrollTop <= 0;
-      const atBottom = el.scrollHeight - el.scrollTop <= el.clientHeight + 1;
+      const atTop = frame.scrollTop <= 0;
+      const atBottom = frame.scrollHeight - frame.scrollTop <= frame.clientHeight + 1;
 
       setShowTopFade(!atTop);
       setShowBottomFade(!atBottom);
     };
 
-    updateFades(); // initialize
-    el.addEventListener('scroll', updateFades);
+    updateFades();
+    frame.addEventListener('scroll', updateFades);
     return () => {
-      el.removeEventListener('scroll', updateFades);
+      frame.removeEventListener('scroll', updateFades);
     };
   }, []);
 
