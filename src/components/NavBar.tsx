@@ -1,4 +1,6 @@
+'use client';
 import Link from 'next/link';
+import GoogleSignIn from '@/components/GoogleSignIn';
 
 export default function NavBar() {
   return (
@@ -8,6 +10,7 @@ export default function NavBar() {
       <Link href="/calendar">Calendar</Link>
       <Link href="/standings">Standings</Link>
       <Link href="/rosters">Rosters</Link>
+      <GoogleSignIn />
     </header>
   );
 }
