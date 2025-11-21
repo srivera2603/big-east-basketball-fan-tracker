@@ -14,5 +14,12 @@ export default function GoogleSignIn() {
     });
   };
 
-  return <button onClick={signIn}>Sign in with Google</button>;
+  return (
+    <button
+      className="absolute bg-gray-200 text-blue-400 px-2 py-1 right-4 rounded"
+      onClick={signIn}
+    >
+      Sign in
+    </button>
+  );
 }

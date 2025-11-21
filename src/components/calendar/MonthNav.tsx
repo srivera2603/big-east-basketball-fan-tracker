@@ -3,8 +3,8 @@ interface MonthNavProps {
   visibleYear: number;
   onPrev: () => void;
   onNext: () => void;
-  minMonth: number; // Boundaries to keep people in season
-  maxMonth: number;
+  minMonth?: number; // Boundaries to keep people in season
+  maxMonth?: number;
 }
 
 const months = [
