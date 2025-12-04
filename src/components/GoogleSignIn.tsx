@@ -9,7 +9,7 @@ export default function GoogleSignIn() {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${location.origin}/auth/callback?redirect_to=${encodeURIComponent(pathname)}`,
+        redirectTo: `${location.origin}/api/auth/callback?redirect_to=${encodeURIComponent(pathname)}`,
       },
     });
   };
